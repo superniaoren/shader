@@ -1,6 +1,6 @@
-##
+
 SRC=test_create_window.cpp
-CXXFLAGS= -std=c++11 -I$(HOME)/local/include -L$(HOME)/local/lib -lglfw -lrt -lpthread -ldl
+CXXFLAGS= -std=c++11 -I$(HOME)/local/include -I/usr/include -L$(HOME)/local/lib -lglfw -L$(HOME)/local/nvidia-410/lib -lGL -lrt -lpthread -ldl
 BIN=create_window
 all: $(BIN)
 
