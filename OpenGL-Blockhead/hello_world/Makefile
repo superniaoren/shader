@@ -1,6 +1,6 @@
 
 SRC=test_hello_world.cpp
-CXXFLAGS= -std=c++11 -I$(HOME)/local/include -I/usr/include -L$(HOME)/local/lib -lglfw -L$(HOME)/local/nvidia-410/lib -lGL -lrt -lpthread -ldl
+CXXFLAGS= -std=c++11 -I$(HOME)/local/include -I/usr/include -L$(HOME)/local/lib -lglfw -L$(HOME)/local/nvidia-410/lib -lGL -lrt -lpthread -ldl -Wl,-rpath=$(HOME)/local/nvidia-410/lib
 BIN=hello_world
 all: $(BIN)
 
