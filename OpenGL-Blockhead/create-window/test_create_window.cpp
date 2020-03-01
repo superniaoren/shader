@@ -4,6 +4,11 @@
 
 #include <GL/gl.h>
 
+void cb_framebuffer_size(GLFWwindow *window, int width, int height){
+	//assert(width > 0 && height > 0);
+	glViewport(0, 0, width, height);
+}
+
 int main(int argc, char* argv[]) {
     (void)argc;
     (void)argv;
@@ -22,9 +27,21 @@ int main(int argc, char* argv[]) {
 	glfwMakeContextCurrent(window);
 
 	// opengl
+	// behind the scene OGL use the data to transform 2D coordinates 
+	// to the coordinates on your screen
 	//glViewPoint(0, 0, 800, 600);  // [zoo] error, port, not point, just a funny typo ...
 	glViewport(0, 0, 800, 600);
 
+	glfwSetFramebufferSizeCallback(window, cb_framebuffer_size);
+
+	// render loop
+	while(!glfwWindowShouldClose(window)) {
+		glfwSwapBuffers(window);
+		// swap the color buffer (a large 2D buffer that contains color values for 
+		// each pixel in GLFW's window) that is used to render to during this render 
+		// iteration and show it as output to the screen
+		glfwPollEvents();
+	}
 	// close
 	glfwTerminate();
 
